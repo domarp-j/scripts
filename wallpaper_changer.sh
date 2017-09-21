@@ -11,15 +11,18 @@ eval "date"
 # Details: https://askubuntu.com/questions/140305/cron-not-able-to-succesfully-change-background
 # Interesting note: works fine if executed from CLI, since env variable is set properly 
 
-user=$(whoami)
+# user=$(whoami)
 
-fl=$(find /proc -maxdepth 2 -user $user -name environ -print -quit)
-for i in {1..5}
-do
-  fl=$(find /proc -maxdepth 2 -user $user -name environ -newer "$fl" -print -quit)
-done
+# fl=$(find /proc -maxdepth 2 -user $user -name environ -print -quit)
+# for i in {1..5}
+# do
+#   fl=$(find /proc -maxdepth 2 -user $user -name environ -newer "$fl" -print -quit)
+# done
 
-export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS "$fl" | cut -d= -f2-)
+# export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS "$fl" | cut -d= -f2-)
+
+PID=$(pgrep gnome-session)
+export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
 
 # Get number of files (minus 1) in wallpapers
 COUNT="$(ls -l ~/Dropbox/wallpapers | grep -v ^d | wc -l )"
