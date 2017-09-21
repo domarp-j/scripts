@@ -1,0 +1,47 @@
+#!/bin/bash
+
+bundle init
+
+cat <<EOF >> Gemfile
+
+gem 'rspec'
+gem 'guard-rspec', require: false
+gem 'guard'
+
+EOF
+
+bundle install
+
+rspec --init
+
+cat <<EOF >> .rspec
+
+--format documentation
+
+EOF
+
+mkdir lib
+
+guard init rspec
+
+rm Guardfile
+
+touch Guardfile
+
+cat <<EOF >> Guardfile
+
+guard :rspec, cmd: "bundle exec rspec" do
+  # watch /lib/ files
+  watch(%r{^lib/(.+).rb$}) do |m|
+  "spec/#{m[1]}_spec.rb"
+  end
+
+  # watch /spec/ files
+  watch(%r{^spec/(.+).rb$}) do |m|
+  "spec/#{m[1]}.rb"
+  end
+end
+
+EOF # currently added to Guardfile...why?
+
+

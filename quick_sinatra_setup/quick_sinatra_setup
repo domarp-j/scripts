@@ -1,0 +1,69 @@
+#!/bin/bash
+
+bundle init
+
+cat <<EOF >> Gemfile
+gem 'sinatra'
+gem 'sinatra-contrib'
+
+group :development do
+  gem 'pry-byebug' # for debugging
+end
+EOF
+
+bundle install
+
+touch app.rb
+
+cat <<EOF >> app.rb
+require 'sinatra'
+require 'sinatra/reloader'
+require 'pry-byebug'
+
+enable :sessions
+
+get '/' do
+  'Hello, world!'
+end
+EOF
+
+touch config.ru
+
+cat <<EOF >> config.ru
+require '/app'
+run Sinatra:Application
+EOF
+
+mkdir lib # for classes
+
+mkdir helpers # for helper modules
+
+mkdir public # for public assets (i.e. 404)
+
+mkdir public/assets # for static assets (CSS, JS)
+
+mkdir views # stores view templates
+
+mkdir views/shared # stores partials
+
+touch views/shared/navbar.erb # add navbar
+
+touch views/index.erb # main page
+
+touch views/layout.erb # basic layout used throughout app
+
+cat <<EOF >> views/layout.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <%= erb :"shared/navbar" %>
+    <%= yield %>
+  </body>
+</html>
+EOF
+
