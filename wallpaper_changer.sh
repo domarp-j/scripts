@@ -21,6 +21,9 @@ eval "date"
 
 # export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS "$fl" | cut -d= -f2-)
 
+# Update - solution above was unreliable - DBUS_SESSION_BUS_ADDRESS would not set at times 
+# New solution: https://askubuntu.com/questions/742870/background-not-changing-using-gsettings-from-cron
+
 PID=$(pgrep gnome-session)
 export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
 
