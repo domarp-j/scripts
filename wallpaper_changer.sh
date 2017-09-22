@@ -8,21 +8,8 @@ eval "date"
 
 # Properly set the DBUS_SESSION_BUS_ADDRESS environment variable to properly render wallpaper
 # Needed to run script as a cron job, since cron jobs work with a different sent of env variables 
-# Details: https://askubuntu.com/questions/140305/cron-not-able-to-succesfully-change-background
 # Interesting note: works fine if executed from CLI, since env variable is set properly 
-
-# user=$(whoami)
-
-# fl=$(find /proc -maxdepth 2 -user $user -name environ -print -quit)
-# for i in {1..5}
-# do
-#   fl=$(find /proc -maxdepth 2 -user $user -name environ -newer "$fl" -print -quit)
-# done
-
-# export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS "$fl" | cut -d= -f2-)
-
-# Update - solution above was unreliable - DBUS_SESSION_BUS_ADDRESS would not set at times 
-# New solution: https://askubuntu.com/questions/742870/background-not-changing-using-gsettings-from-cron
+# Details: https://askubuntu.com/questions/742870/background-not-changing-using-gsettings-from-cron
 
 PID=$(pgrep gnome-session)
 export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
