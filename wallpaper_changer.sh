@@ -35,4 +35,4 @@ eval "gsettings set org.gnome.desktop.background picture-uri 'file:///${WP_PATH}
 
 # Add the following to cron jobs (crontab -e) to run job every 3 hours & log to /tmp/cron.log
 # DISPLAY=:0
-# 0 */3 * * * /home/pjacob/Dropbox/programming/scripts/wallpaper_changer.sh >> /tmp/cron.log 2>&1
+# 0 */3 * * * /home/<user>/path/to/scripts/wallpaper_changer.sh >> /tmp/cron.log 2>&1
