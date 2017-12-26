@@ -6,7 +6,8 @@
 
 <ul>
   <li>Includes PostgreSQL</li>
-  <li>Includes a Dockerfile and docker-compose.yml</li>
+  <li>Includes a Dockerfile and docker-compose.yml (see script for details)</li>
+  <li>Uses built-in Rails testing framework for now (RSpec later?)</li>
 </ul>
 
 <b>Instructions</b>
