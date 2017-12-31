@@ -9,9 +9,9 @@ fi
 # Get name of Rails app as argument
 APP=$1
 
-# Create Rails app with PostgreSQL setup
+# Create Rails app with PostgreSQL setup, skipping turbolinks
 echo "Creating Rails app with PostgreSQL..."
-rails new "${APP}" --database=postgresql
+rails new "${APP}" --database=postgresql --skip-turbolinks
 cd "${APP}"
 
 # Create Docker files
