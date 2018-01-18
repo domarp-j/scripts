@@ -22,13 +22,17 @@ touch Dockerfile
 cat <<EOF >> Dockerfile
 
 FROM ruby:2.3.4
+
 RUN apt-get update && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir -p /${APP}
 WORKDIR /${APP}
-ADD Gemfile /${APP}/Gemfile
-ADD Gemfile.lock /${APP}/Gemfile.lock
+
+COPY Gemfile /${APP}/Gemfile
+COPY Gemfile.lock /${APP}/Gemfile.lock
+
 RUN gem install bundler && bundle install
-ADD . /${APP}
+
+COPY . /${APP}
 
 EOF
 
