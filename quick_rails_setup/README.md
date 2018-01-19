@@ -14,5 +14,5 @@
 
 <ul>
   <li>Place the bash script within your repo.</li>
-  <li>Run the script by entering this in the command line: <b>$ ./quick_docker_setup rails-app-name</b></li>
+  <li>Run the script by entering this in the command line: <b>$ ./quick_rails_setup rails-app-name</b></li>
 </ul>
