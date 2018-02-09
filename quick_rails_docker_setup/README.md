@@ -1,6 +1,6 @@
-<h1>Quick Rails Setup Script</h1>
+<h1>Quick Rails/Docker Setup Script</h1>
 
-<i>Quick & dirty script to set up Rails</i>
+<i>Quick & dirty script to set up Rails with Docker</i>
 
 <b>Rails App Details</b>
 
@@ -14,5 +14,5 @@
 
 <ul>
   <li>Place the bash script within your repo.</li>
-  <li>Run the script by entering this in the command line: <b>$ ./quick_rails_setup rails-app-name</b></li>
+  <li>Run the script by entering this in the command line: <b>$ ./quick_rails_docker_setup rails-app-name</b></li>
 </ul>
