@@ -7,8 +7,8 @@ echo "Changing wallpaper..."
 eval "date"
 
 # Properly set the DBUS_SESSION_BUS_ADDRESS environment variable to use gsettings
-# Needed to run script as a cron job, since cron jobs work with a different sent of env variables 
-# Interesting note: works fine if executed from CLI, since env variable is set properly 
+# Needed to run script as a cron job, since cron jobs work with a different sent of env variables
+# Interesting note: works fine if executed from CLI, since env variable is set properly
 # Details: https://askubuntu.com/questions/742870/background-not-changing-using-gsettings-from-cron
 
 PID=$(pgrep gnome-session)
